@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace= "guestbook">
 	
+	<resultMap id="resultMapGuestBookVo" type= "GuestBookVo">
+		<result column="no" property= "no" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
 	
-	
-	<select id="getGuestList" resultType="GuestBookVo">
+	<select id="getGuestList" resultMap="resultMapGuestBookVo">
 		<![CDATA[
 			select  no
 			        ,name
@@ -31,7 +37,7 @@
 		]]>
 	</delete>
 	
-	<select id="getGuest" parameterType="int" resultType="GuestBookVo">
+	<select id="getGuest" parameterType="int" resultMap="resultMapGuestBookVo">
 		<![CDATA[
 			select  no
 			        ,name
